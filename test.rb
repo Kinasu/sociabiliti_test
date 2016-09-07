@@ -8,5 +8,6 @@ test = Test.new
 
 while test.interview == true do 
 end
-  
+ 
+# Тест
 test.upshot(test)
