@@ -1,13 +1,34 @@
 # require './test_result.rb' # подключаем файлы с классами
-require './lib/test_class.rb' #28_2 положила файлы с классом и текстом в отдельную папку
+require_relative 'lib/test_class.rb' #28_2 положила файлы с классом и текстом в отдельную папку
+
+current_path = File.dirname(__FILE__)
+file_path = current_path + '/lib/result_test.txt'
+file_path_question = current_path + '/lib/question_test.txt'
+
+result_test = File.new(file_path, "r:UTF-8")
+question_test = File.new(file_path_question, "r:UTF-8")
+   
+if !File.exist?(result_test || question_test)
+  abort "Тест сломался, попробуйте позже."
+end
+
+@questions_test = question_test.readlines
+@result_test_finaly = result_test.readlines
+
+question_test.close
+result_test.close
+
 
 # Приветствие. Начало работы.
 puts "Здравствуйте, мы зададим Вам вопросы, для определения Вашей коммуникабельности."
 
 test = Test.new
 
-while test.interview == true do 
+while test.interview(@questions_test) == true do 
 end
  
-# Тест
-test.upshot(test)
+# результаты теста
+puts "\nРезультат теста: \n\nВсего баллов - #{test.points}:"
+puts
+
+test.upshot(@result_test_finaly)
