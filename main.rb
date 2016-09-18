@@ -8,7 +8,7 @@ file_path_question = current_path + '/data/question_test.txt'
 result_test = File.new(file_path, "r:UTF-8")
 question_test = File.new(file_path_question, "r:UTF-8")
    
-if !File.exist?(result_test || question_test)
+if !File.exist?(result_test) && if !File.exist?(question_test)
   abort "Тест сломался, попробуйте позже."
 end
 
