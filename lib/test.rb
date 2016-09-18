@@ -1,5 +1,5 @@
 class Test
-  attr_accessor :points
+  attr_accessor :points, :questions_test
   
   def initialize
     # Поле для хранения кол-ва очков
@@ -8,7 +8,7 @@ class Test
     @present_question = 0
   end
   # Интервью
-  def interview(questions_test)
+  def interview
     puts questions_test[@present_question]
     user_input = 0
     
